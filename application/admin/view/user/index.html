@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="__STATIC__/img/favicon.png">
+
+    <title>慕课</title>
+
+    
+  </head>
+
+  <body>
+  <!-- container section start -->
+  <section id="container" class="">
+     
+      
+      {include file="public:header" /}
+      {include file="public:sider" /}
+      
+
+<section id="main-content">
+          <section class="wrapper">
+     
+             
+                  
+              
+                  <div class="col-sm-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              用户列表
+                          </header>
+                          <table class="table table-hover">
+                              <thead>
+                              
+                              <tr>
+                                  <th>id号</th>
+                                  <th>用户名</th>
+                                  <th>用户头像</th>
+                                  <th>用户性别</th>
+                                  <th>邮箱</th>
+                                  <th>操作</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {volist name="ulist" id="vo"}
+                              <tr>
+                                  <td>{$vo.usid}</td>
+                                  <td>{$vo.username}</td>
+                                  <td><img src="__STATIC__/images/{$vo.pic}" style="width: 60px;height: 100px"></td>
+                                  <td>
+                                    {switch $vo.gender}
+                                      {case 0}男{/case}
+                                      {case 1}女{/case}
+                                    {/switch}
+                                  </td>
+                                  <td>{$vo.email}</td>
+                                  <td>
+                                    <div class="btn-group">
+                                      <button type="button" class="btn btn-success btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="jsedit({$vo.usid})">详情</button>
+                                      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                      </button>
+                                      <ul class="dropdown-menu">
+                                        <li><a href="#">删除</a></li>
+                                        <li><a href="#">修改</a></li>
+                                      </ul>
+                                    </div>
+                                  </td>
+                              </tr>
+                                {/volist}
+                              </tbody>
+                          </table>
+                      </section>
+                  </div>
+              </div>
+       
+              
+          </section>
+      </section>
+      <!--main content end-->
+             
+</section>
+    {include file="public:fooder" /}
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm bg-success" role="document">
+    <div class="modal-content">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="__STATIC__/images/1.jpg" style="width: 150px;height: 200px">
+      </div>
+      <div class="col-md-6" style="margin: 0 author">
+        <span class="lite">姓名：</span><span id="name1"></span><br>
+        <span class="lite">性别：</span><span id="gender1"></span><br>
+        <span class="lite">生日：</span><span id="birthdate1">2018-05-09</span><br>
+        <span class="lite">禁言时间：</span><span id="ban1">10</span>分钟<br>
+        <span class="lite">邮箱：</span><span id="email1">123@qq</span><br>
+        <span class="lite">注册时间：</span><span id="userdate1">2018-05-15</span><br>
+        <span class="lite">个性签名：</span><span id="signature1"></span><br>
+      </div>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript">
+      function jsedit(usid){
+        //从数据库里面获取当前要修改的数据
+  $.getJSON('{:url('edit')}',{'usid':usid},function(json){
+  //alert(json);
+   $('#name1').text(json.username);
+   $('#gender1').text(json.gender);
+   $('#birthdate1').text(json.birthdate);
+   $('#ban1').text(json.ban);
+   $('#email1').text(json.email);
+   $('#userdate1').text(json.userdate);
+   $('#signature1').text(json.signature);
+});
+
+        //把数据放到模态框中显示
+      }
+    </script>
+
+  </body>
+</html>

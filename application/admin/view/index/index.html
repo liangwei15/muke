@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="__STATIC__/img/favicon.png">
+
+    <title>慕课</title>
+
+    
+  </head>
+
+  <body>
+  <!-- container section start -->
+  <section id="container" class="">
+     
+      
+      {include file="public:header" /}
+      {include file="public:sider" /}
+      
+
+<section id="main-content">
+          <section class="wrapper">
+     
+             
+                  
+              
+                  <div class="col-sm-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              用户列表
+                          </header>
+                          <table class="table table-hover">
+                              <thead>
+                              
+                              <tr>
+                                  <th>id号</th>
+                                  <th>用户名</th>
+                                  <th>用户头像</th>
+                                  <th>用户性别</th>
+                                  <th>邮箱</th>
+                                  <th>操作</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {volist name="ulist" id="vo"}
+                              <tr>
+                                  <td>id号</td>
+                                  <td>用户名</td>
+                                  <td><img src="__STATIC__/images/1.jpg" style="width: 60px;height: 100px"></td>
+                                  <td>男</td>
+                                  <td>123@qq</td>
+                                  <td>
+                                    <div class="btn-group">
+                                      <button type="button" class="btn btn-success btn-primary">详情</button>
+                                      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                      </button>
+                                      <ul class="dropdown-menu">
+                                        <li><a href="#">删除</a></li>
+                                        <li><a href="#">修改</a></li>
+                                      </ul>
+                                    </div>
+                                  </td>
+                              </tr>                           
+                              </tbody>
+                          </table>
+                      </section>
+                  </div>
+              </div>
+       
+              
+          </section>
+      </section>
+      <!--main content end-->
+             
+</section>
+    {include file="public:fooder" /}
+
+
+  </body>
+</html>
